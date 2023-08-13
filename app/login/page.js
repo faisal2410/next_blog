@@ -67,12 +67,6 @@ export default function Login() {
             </button>
           </form>
 
-          <button
-            className="btn btn-danger mb-4"
-            onClick={() => signIn("google", { callbackUrl })}
-          >
-            Sign in with Google
-          </button>
         </div>
       </div>
       <Toaster/>

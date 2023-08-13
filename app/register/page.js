@@ -81,7 +81,7 @@ export default function Register() {
         </form>
       </div>
     </div>
-    <Toaster  position="top-right"/>
+    <Toaster/>
   </div>
   );
 }
