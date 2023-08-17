@@ -5,7 +5,8 @@ import bcrypt from "bcrypt";
 
 export async function POST(req){
     const _req = await req.json();
-    // console.log("_req => ", _req);
+
+    console.log("_req => ", _req);
     await dbConnect();
 
     try {
