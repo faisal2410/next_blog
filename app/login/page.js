@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import {toast,Toaster} from "react-hot-toast";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 export default function Login() {
@@ -10,8 +10,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  // const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +25,7 @@ export default function Login() {
         toast.error(result.error);
       } else {
         toast.success("Login successful");
-        // router.push(callbackUrl);
+      
         router.push("/");
       }
     } catch (err) {
