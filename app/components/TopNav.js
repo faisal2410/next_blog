@@ -5,7 +5,7 @@ const TopNav = () => {
 
     const { data, status } = useSession();
 
-     console.log("data => ", data, " status => ", status);
+     console.log("========>","data => ", data, " status => ", status);
 
     return (
         <nav className="nav shadow p-2 justify-content-between mb-3">
