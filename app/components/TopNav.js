@@ -15,9 +15,9 @@ const TopNav = () => {
                     <div className="d-flex">
                         <Link
                             className="nav-link"
-                            href="/dashboard/user"                                
+                            href={`/dashboard/${data?.user?.role==='admin' ? 'admin' : 'user'}`}                                
                         >
-                          Dashboard
+                          {data?.user?.name} ({data?.user?.role})
                         </Link>
                         <a
                             className="nav-link pointer"

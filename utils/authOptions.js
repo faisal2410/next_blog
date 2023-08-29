@@ -35,6 +35,40 @@ export const authOptions = {
             },
         }),
     ],
+
+    callbacks: {
+        // save user if they login via social networks
+        async signIn({ user }) {
+          dbConnect();
+    
+          const { email } = user;
+    
+          let dbUser = await User.findOne({ email });
+    
+          if (!dbUser) {
+            dbUser = await User.create({
+              name: user.name,
+              email: user.email,
+              image: user.image,
+            });
+          }
+          return true;
+        },
+        // add additional user info to the session (jwt, session)
+        jwt: async ({ token, user }) => {
+          console.log("jwt callback", token, user);
+          const userByEmail = await User.findOne({ email: token.email });
+          userByEmail.password = undefined;
+          token.user = userByEmail;
+          return token;
+        },
+        session: async ({ session, token }) => {
+          console.log("session callback", session, token);
+          session.user = token.user; // jwt token.user is accessed here
+          return session;
+        },
+      },
+
  
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
