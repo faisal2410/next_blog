@@ -17,7 +17,7 @@ const TopNav = () => {
                             className="nav-link"
                             href={`/dashboard/${data?.user?.role==='admin' ? 'admin' : 'user'}`}                                
                         >
-                          {data?.user?.name} ({data?.user?.role})
+                          {data?.user?.name} ({data?.user?.role}) 
                         </Link>
                         <a
                             className="nav-link pointer"

@@ -56,14 +56,14 @@ export const authOptions = {
         },
         // add additional user info to the session (jwt, session)
         jwt: async ({ token, user }) => {
-          console.log("jwt callback", token, user);
+        //   console.log("jwt callback", token, user);
           const userByEmail = await User.findOne({ email: token.email });
           userByEmail.password = undefined;
           token.user = userByEmail;
           return token;
         },
         session: async ({ session, token }) => {
-          console.log("session callback", session, token);
+        //   console.log("session callback", session, token);
           session.user = token.user; // jwt token.user is accessed here
           return session;
         },
