@@ -3,7 +3,8 @@ export default function AdminDashboard(){
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <p className="lead">Amin Dashboard</p>
+                    <p className="lead">Admin Dashboard</p>
+                    
                 </div>
                 
         </div>

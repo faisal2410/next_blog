@@ -6,7 +6,7 @@ import { getToken } from "next-auth/jwt";
 
 export async function POST(req) {
   const _req = await req.json();
-  // console.log("blog create => ", _req);
+  console.log("blog create => ", _req);
   await dbConnect();
 
   try {
