@@ -16,6 +16,8 @@
     "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "react-quill": "^2.0.0",
+    "slugify": "^1.6.6"
   }
 }
