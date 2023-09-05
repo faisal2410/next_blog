@@ -9,7 +9,8 @@ export async function GET(req) {
   console.log("searchParams => ", searchParams);
 
   const { page } = searchParams || {};
-  const pageSize = 6;
+  const pageSize = 2;
+
 
   try {
     // current page
@@ -20,7 +21,7 @@ export async function GET(req) {
     const totalBlogs = await Blog.countDocuments({});
 
     const blogs = await Blog.find({})
-      .populate("postedBy", "name")
+      .populate("postedBy", "name email")
       .skip(skip)
       .limit(pageSize)
       .sort({ createdAt: -1 });
