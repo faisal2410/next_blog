@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BlogList from "./components/blogs/BlogList";
 
 async function getBlogs(searchParams) {
   // console.log("searchParams => ", searchParams);
@@ -26,7 +27,12 @@ async function getBlogs(searchParams) {
 
 export default async function Home({ searchParams }) {
   const data = await getBlogs(searchParams);
-  console.log("data in home page => ", data);
+  // console.log("data in home page => ", data);
+
+  const { blogs, currentPage, totalPages } = data;
+
+  const hasPreviousPage = currentPage > 1;
+  const hasNextPage = currentPage < totalPages;
 
 
   
@@ -36,9 +42,52 @@ export default async function Home({ searchParams }) {
       <p className="lead text-primary text-center">Latest Blogs</p>
 
      
-      { <pre>{JSON.stringify(data, null, 4)}</pre> }
+      {/* { <pre>{JSON.stringify(data, null, 4)}</pre> } */}
+      <BlogList blogs={blogs} />
 
-    
+      <div className="d-flex justify-content-center">
+        <nav aria-label="Page navigation">
+          <ul className="pagination">
+            {hasPreviousPage && (
+              <li className="page-item">
+                <Link
+                  className="page-link px-3"
+                  href={`?page=${currentPage - 1}`}
+                >
+                  Previous
+                </Link>
+              </li>
+            )}
+
+            {Array.from({ length: totalPages }, (_, index) => {
+              const page = index + 1;
+              return (
+                <li
+                  key={page}
+                  className={`page-item ${
+                    currentPage === page ? "active" : ""
+                  }`}
+                >
+                  <Link className="page-link" href={`?page=${page}`}>
+                    {page}
+                  </Link>
+                </li>
+              );
+            })}
+
+            {hasNextPage && (
+              <li className="page-item">
+                <Link
+                  className="page-link px-3"
+                  href={`?page=${currentPage + 1}`}
+                >
+                  Next
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }
