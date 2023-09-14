@@ -38,6 +38,7 @@ export default async function Home({ searchParams }) {
   
 
   return (
+  
     <div>
       <p className="lead text-primary text-center">Latest Blogs</p>
 
