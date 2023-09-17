@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Link from "next/link";
+import BlogLike from "../../components/blogs/BlogLike"
 
 
 dayjs.extend(relativeTime);
@@ -52,10 +53,11 @@ export default async function BlogViewPage({ params }) {
               </small>
             </div>
             <div className="card-footer d-flex justify-content-between">
+            <BlogLike blog={blog} />
             
-              <small className="text-muted">
+              {/* <small className="text-muted">
                 ❤️ {blog?.likes?.length} likes
-              </small>
+              </small> */}
               <small className="text-muted">
                 Posted {dayjs(blog.createdAt).fromNow()}
               </small>
