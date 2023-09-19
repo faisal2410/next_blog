@@ -63,8 +63,8 @@ export default function BlogLike({ blog }) {
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to like blog`);
         toast.error("Failed to like blog");
+        throw new Error(`Failed to like blog`);
       } else {
         const data = await response.json();
         setLikes(data.likes);
