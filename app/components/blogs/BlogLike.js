@@ -80,7 +80,7 @@ export default function BlogLike({ blog }) {
   return (
     <>
       <small className="text-muted pointer">
-        <span onClick={handleLike}>❤️ {likes?.length} likes</span>
+        <span onClick={handleLike}>💔 ✅ {likes?.length} likes</span>
       </small>
       <Toaster/>
     </>
